@@ -1,0 +1,19 @@
+{
+  "name": "node-lib-zookeeper",
+  "dependencies": {
+    "node-zookeeper-client": "github:Tapad/typed-node-zookeeper-client#3d00a7a00f66bb24e1a72efc48e606d6f0f9d4de",
+    "uuid": "github:Tapad/typed-uuid#124824d2b96c1fed11b26bd4c2667e21d886bf44"
+  },
+  "globalDependencies": {
+    "node": "registry:env/node#6.0.0+20161019193037"
+  },
+  "devDependencies": {
+    "chai": "registry:npm/chai#3.5.0+20160723033700",
+    "chai-as-promised": "registry:npm/chai-as-promised#5.1.0+20160310030142",
+    "sinon": "registry:npm/sinon#1.16.0+20160723033700",
+    "sinon-chai": "registry:npm/sinon-chai#2.8.0+20160310030142"
+  },
+  "globalDevDependencies": {
+    "mocha": "registry:dt/mocha#2.2.5+20160720003353"
+  }
+}

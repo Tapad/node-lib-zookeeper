@@ -1,0 +1,15 @@
+{
+	"extends": "./tsconfig.json",
+    "compilerOptions": {
+		"declaration": true,
+        "emitDecoratorMetadata": true,
+		"noEmit": false,
+		"rootDir": "./src",
+		"baseUrl": ".",
+        "outDir": "dist"
+    },
+    "include": [
+        "./src/**/*.ts",
+		"./typings/**/*.d.ts"
+    ]
+}

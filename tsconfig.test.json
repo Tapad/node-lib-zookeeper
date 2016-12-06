@@ -1,0 +1,11 @@
+{
+	"extends": "./tsconfig.json",
+    "compilerOptions": {
+		"sourceMap": true,
+        "emitDecoratorMetadata": true,
+		"noEmit": false,
+		"rootDir": ".",
+		"baseUrl": ".",
+        "outDir": "test-tmp"
+    }
+}

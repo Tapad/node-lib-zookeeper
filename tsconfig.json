@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2015",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+		"strictNullChecks": true,
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false,
+		"alwaysStrict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noEmit": true,
+		"rootDir": "."
+    },
+    "include": [
+        "./src/**/*.ts",
+		"./test/**/*.ts",
+		"./typings/**/*.d.ts"
+    ]
+}

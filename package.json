@@ -1,0 +1,45 @@
+{
+  "name": "node-lib-zookeeper",
+  "version": "0.0.1",
+  "description": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tapad/node-lib-zookeeper.git"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "build": "tsc -p ./tsconfig.build.json",
+    "clean": "del-cli ./.nyc_output ./coverage ./dist ./test-tmp",
+    "coverage": "nyc --reporter lcov --reporter text --reporter text-summary --exclude \"**/test/**\" --report-dir ./coverage npm run test",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "lint": "tslint -c tslint.json --project tsconfig.json -t stylish",
+    "postbuild": "node ./scripts/copy-package && node ./scripts/copy-dist-files",
+    "postinstall": "typings install",
+    "posttest": "del-cli ./test-tmp",
+    "prebuild": "del-cli ./dist && npm run test && npm run lint",
+    "precoverage": "del-cli ./coverage",
+    "pretest": "del-cli ./test-tmp && tsc -p ./tsconfig.test.json",
+    "test": "mocha --ui bdd --require ./test-tmp/test/bootstrap \"./test-tmp/test/**/*.spec.js\""
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "coveralls": "^2.11.15",
+    "del-cli": "^0.2.0",
+    "mocha": "^3.2.0",
+    "nyc": "^10.0.0",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0",
+    "tslint": "^4.0.2",
+    "typescript": "^2.1.1",
+    "typings": "^2.0.0"
+  },
+  "dependencies": {
+    "node-zookeeper-client": "^0.2.2",
+    "uuid": "^3.0.1"
+  }
+}
