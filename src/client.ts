@@ -33,9 +33,9 @@ export class Client {
 	}
 
 	announce(serviceId: string, address: string, port: number, data?: any): Promise<void> {
-		let servicePath: string = `/${ this.basePath }/${ serviceId }/${ this.version }`;
+		const servicePath: string = `/${ this.basePath }/${ serviceId }/${ this.version }`;
 
-		let zkData: any = {
+		const zkData: any = {
 			serviceEndpoint: {
 				host: address,
 				port: port
@@ -67,7 +67,7 @@ export class Client {
 	}
 
 	private registerService(path: string, data: any): Promise<void> {
-		let id: string = uuid(),
+		const id: string = "member_" + uuid(),
 			instancePath: string = `${ path }/${ id }`;
 		return new Promise<void>((resolve, reject) => {
 			let bufferedData: Buffer | undefined;

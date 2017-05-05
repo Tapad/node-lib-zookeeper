@@ -5,7 +5,7 @@
     "uuid": "github:Tapad/typed-uuid#124824d2b96c1fed11b26bd4c2667e21d886bf44"
   },
   "globalDependencies": {
-    "node": "registry:env/node#6.0.0+20161019193037"
+    "node": "registry:env/node#6.0.0+20170213133316"
   },
   "devDependencies": {
     "chai": "registry:npm/chai#3.5.0+20160723033700",
