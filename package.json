@@ -1,0 +1,19 @@
+{
+  "name": "node-lib-zookeeper",
+  "version": "0.0.3",
+  "description": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tapad/node-lib-zookeeper.git"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {
+    "node-zookeeper-client": "^0.2.2"
+  },
+  "main": "index.js",
+  "types": "index.d.ts"
+}
