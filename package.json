@@ -1,6 +1,6 @@
 {
   "name": "node-lib-zookeeper",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "license": "UNLICENSED",
   "private": true,
@@ -39,7 +39,6 @@
     "typings": "^2.0.0"
   },
   "dependencies": {
-    "node-zookeeper-client": "^0.2.2",
-    "uuid": "^3.0.1"
+    "node-zookeeper-client": "^0.2.2"
   }
 }

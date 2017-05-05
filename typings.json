@@ -1,8 +1,7 @@
 {
   "name": "node-lib-zookeeper",
   "dependencies": {
-    "node-zookeeper-client": "github:Tapad/typed-node-zookeeper-client#3d00a7a00f66bb24e1a72efc48e606d6f0f9d4de",
-    "uuid": "github:Tapad/typed-uuid#124824d2b96c1fed11b26bd4c2667e21d886bf44"
+    "node-zookeeper-client": "github:Tapad/typed-node-zookeeper-client#3d00a7a00f66bb24e1a72efc48e606d6f0f9d4de"
   },
   "globalDependencies": {
     "node": "registry:env/node#6.0.0+20170213133316"

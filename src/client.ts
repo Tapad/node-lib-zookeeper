@@ -1,5 +1,4 @@
 import { Client as ZkClient, CreateMode, createClient } from "node-zookeeper-client";
-import { v4 as uuid } from "uuid";
 
 export interface ClientOptions {
 	retryCount?: number;
@@ -67,23 +66,50 @@ export class Client {
 	}
 
 	private registerService(path: string, data: any): Promise<void> {
-		const id: string = "member_" + uuid(),
-			instancePath: string = `${ path }/${ id }`;
-		return new Promise<void>((resolve, reject) => {
-			let bufferedData: Buffer | undefined;
-			if (data != null) {
-				bufferedData = new Buffer(JSON.stringify(data));
-			}
-			this.underlying
-				.transaction()
-				.create(instancePath, bufferedData, undefined, CreateMode.EPHEMERAL)
-				.commit((err) => {
-					if (err) {
-						reject(err);
-						return;
-					}
-					resolve();
-				});
+		return this.getInstancePath(path).then((instancePath) => {
+			return new Promise<void>((resolve, reject) => {
+				let bufferedData: Buffer | undefined;
+				if (data != null) {
+					bufferedData = new Buffer(JSON.stringify(data));
+				}
+				this.underlying
+					.transaction()
+					.create(instancePath, bufferedData, undefined, CreateMode.EPHEMERAL)
+					.commit((err) => {
+						if (err) {
+							reject(err);
+							return;
+						}
+						resolve();
+					});
+			});
 		});
 	}
+
+	private getInstancePath(path: string): Promise<string> {
+		return new Promise<string>((resolve, reject) => {
+			const attempt: () => void = () => {
+				const id: string = "member_" + randomInt(),
+					instancePath: string = `${ path }/${ id }`;
+
+				this.underlying.exists(instancePath, () => { /* noop */ }, (err, stat) => {
+					if (err) {
+						reject(err);
+					}
+					if (stat) {
+						attempt();
+						return;
+					}
+					resolve(instancePath);
+				});
+			};
+			attempt();
+		});
+	}
+}
+
+function randomInt(): string {
+	const n: number = Math.random() * ~(1 << 31) | 0,
+		s: string = String(n);
+	return Array(10 - s.length).fill("0").join("") + s;
 }
